@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+home
+{% endblock title %}
+
+{% block content %}
+<h1 style="text-align:center;">{{hello}}</h1>
+{% comment %} <br>
+{{user}} {% endcomment %}
+<div>
+<img src="{% static 'image/social_image.png' %}" width="1000" height="600" alt="My image">
+</div>
+{% endblock content %}
+{% block scripts %}
+{% endblock scripts %}
+
+

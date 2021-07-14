@@ -1,0 +1,7 @@
+create a social network 
+	use Postgres database for authentication
+	use Neo4j for social network functionality
+	after login where i will see post created by me and everyone i follow(django authentication with Postgres database and every)
+	user can follow each other
+	user can like post (store the like somewhere)
+	post can be text,image or both
