@@ -9,7 +9,8 @@ from .views import (
     remove_from_friends,
     accept_invatation,
     reject_invatation,
-    ProfileDetailView
+    ProfileDetailView,
+    block_user
     )
 
 app_name = 'profiles'
@@ -20,8 +21,10 @@ urlpatterns = [
     path('my-invites/',invites_received_view,name='my-invites-view'),
     path('to-invite/',invite_profiles_list_view,name='invite-profiles-view'),
     path('send-invite/',send_invatation,name='send-invite'),
+    path('block_user/',block_user,name='block-user'),
     path('remove-friend/',remove_from_friends,name='remove-friend'),
     path('my-invites/acctept/', accept_invatation, name='accept-invite'),
     path('my-invites/reject/', reject_invatation, name='reject-invite'),
-    path('<slug>/',ProfileDetailView.as_view(),name='profile-detail-view')
+    path('<slug>/',ProfileDetailView.as_view(),name='profile-detail-view'),
+    
 ]

@@ -31,7 +31,14 @@ class ProfileManager(models.Manager):
         
 
     def get_all_profiles(self, me):
-        profiles = Profile.objects.all().exclude(user=me)
+        # profiles = Profile.objects.all().exclude(user=me)
+        a = Profile.objects.get(user=me)
+        b = a.blocked_user.all()
+        list1 = list()
+        for i in b:
+            list1.append(i.pk)
+        list1.append(a.pk)
+        profiles = Profile.objects.all().exclude(pk__in=list1)
         return profiles
 
 class Profile(models.Model):
@@ -47,6 +54,7 @@ class Profile(models.Model):
     #find avatar.png
 
     friends = models.ManyToManyField(User, blank=True, related_name='friends')
+    blocked_user = models.ManyToManyField(User, blank=True, related_name='blocked_user')
     slug = models.SlugField(unique=True, blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)

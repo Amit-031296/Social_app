@@ -164,6 +164,25 @@ def send_invatation(request):
     return redirect('profiles:my-profile-view')
 
 @login_required
+def block_user(request):
+    if request.method=='POST':
+        pk = request.POST.get('profile_pk')
+        user = request.user
+        print("pk -->",pk)
+        a = Profile.objects.get(user=user)
+        b = User.objects.get(pk=pk)
+        a.blocked_user.add(b)
+        a.save()
+        # sender = Profile.objects.get(user=user)
+        # receiver = Profile.objects.get(pk=pk)
+
+        # rel = Relationship.objects.create(sender=sender, receiver=receiver, status='send')
+
+        return redirect(request.META.get('HTTP_REFERER'))
+    return redirect('profiles:my-profile-view')
+
+
+@login_required
 def remove_from_friends(request):
     if request.method=='POST':
         pk = request.POST.get('profile_pk')

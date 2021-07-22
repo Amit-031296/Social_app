@@ -14,7 +14,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 def post_comment_create_and_list_view(request):
     qs = Post.objects.all()
     profile = Profile.objects.get(user=request.user)
-
+    print("request.user -->",request.user)
     # initials
     p_form = PostModelForm()
     c_form = CommentModelForm()
