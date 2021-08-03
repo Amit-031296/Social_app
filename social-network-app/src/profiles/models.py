@@ -34,7 +34,6 @@ class ProfileManager(models.Manager):
         # profiles = Profile.objects.all().exclude(user=me)
         print("profiles")
         print("profiles in models")
-        print("models py")
         a = Profile.objects.get(user=me)
         b = a.blocked_user.all()
         list1 = list()
